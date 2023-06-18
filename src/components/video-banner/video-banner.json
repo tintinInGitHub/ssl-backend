@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_video_banner_video_banners",
+  "info": {
+    "displayName": "video_banner",
+    "icon": "slideshow"
+  },
+  "options": {},
+  "attributes": {
+    "video_url": {
+      "type": "string"
+    },
+    "video_length": {
+      "type": "string"
+    }
+  }
+}

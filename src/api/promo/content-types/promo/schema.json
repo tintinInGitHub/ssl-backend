@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "promos",
+  "info": {
+    "singularName": "promo",
+    "pluralName": "promos",
+    "displayName": "promo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title_th": {
+      "type": "string"
+    },
+    "title_en": {
+      "type": "string"
+    },
+    "description_en": {
+      "type": "text"
+    },
+    "description_th": {
+      "type": "text"
+    },
+    "banner": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "video_banner": {
+      "displayName": "video_banner",
+      "type": "component",
+      "repeatable": false,
+      "component": "video-banner.video-banner"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
+      "mappedBy": "promo"
+    }
+  }
+}
