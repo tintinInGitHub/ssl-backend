@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "promo_likes",
+  "info": {
+    "singularName": "promo-like",
+    "pluralName": "promo-likes",
+    "displayName": "promo-like",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "string"
+    },
+    "promo": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::promo.promo",
+      "inversedBy": "promo_likes"
+    }
+  }
+}

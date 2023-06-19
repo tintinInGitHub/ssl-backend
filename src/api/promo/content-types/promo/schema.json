@@ -44,6 +44,12 @@
       "relation": "oneToMany",
       "target": "api::category.category",
       "mappedBy": "promo"
+    },
+    "promo_likes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::promo-like.promo-like",
+      "mappedBy": "promo"
     }
   }
 }
