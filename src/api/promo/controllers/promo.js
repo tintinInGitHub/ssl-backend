@@ -13,7 +13,7 @@ module.exports = createCoreController("api::promo.promo", ({ strapi }) => ({
     let data = await strapi.db.query("api::promo.promo").findMany({
       where: {
         publishedAt: { $notNull: true },
-        $or: [{ inactive_at: null }, { inactive_at: { $gt: _dateNow } }],
+        // $or: [{ inactive_at: null }, { inactive_at: { $gt: _dateNow } }],
       },
       populate: { banner: true, video_banner: true },
     });
