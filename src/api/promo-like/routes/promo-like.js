@@ -13,8 +13,16 @@ module.exports = {
       path: "/promo-like",
       handler: "promo-like.find",
     },
-    { method: "POST", path: "/isLiked", handler: "promo-like.isLiked" },
-    { method: "POST", path: "/liked", handler: "promo-like.liked" },
-    { method: "POST", path: "/unliked", handler: "promo-like.unliked" },
+    {
+      method: "POST",
+      path: "/promo-like/isLiked",
+      handler: "promo-like.isLiked",
+    },
+    { method: "POST", path: "/promo-like/liked", handler: "promo-like.liked" },
+    {
+      method: "POST",
+      path: "/promo-like/unliked",
+      handler: "promo-like.unliked",
+    },
   ],
 };

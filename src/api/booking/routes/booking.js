@@ -1,18 +1,17 @@
 "use strict";
 
 /**
- * promo router
+ * booking router
  */
 
 const { createCoreRouter } = require("@strapi/strapi").factories;
-
 module.exports = {
   routes: [
     {
       method: "GET",
-      path: "/promo",
-      handler: "promo.find",
+      path: "/booking",
+      handler: "booking.find",
     },
-    { method: "POST", path: "/promo/allPromo", handler: "promo.allPromo" },
+    { method: "POST", path: "/booking/book", handler: "booking.book" },
   ],
 };

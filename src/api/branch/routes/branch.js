@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * promo router
+ * branch router
  */
 
 const { createCoreRouter } = require("@strapi/strapi").factories;
@@ -10,9 +10,9 @@ module.exports = {
   routes: [
     {
       method: "GET",
-      path: "/promo",
-      handler: "promo.find",
+      path: "/branch",
+      handler: "branch.find",
     },
-    { method: "POST", path: "/promo/allPromo", handler: "promo.allPromo" },
+    { method: "POST", path: "/branch/allBranch", handler: "branch.allBranch" },
   ],
 };

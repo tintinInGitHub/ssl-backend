@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "special_days",
+  "info": {
+    "singularName": "special-day",
+    "pluralName": "special-days",
+    "displayName": "specialDay"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Type": {
+      "type": "enumeration",
+      "enum": [
+        "Holiday",
+        "Full",
+        "Event"
+      ]
+    },
+    "date": {
+      "type": "date"
+    }
+  }
+}
