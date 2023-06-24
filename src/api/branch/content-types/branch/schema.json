@@ -26,6 +26,12 @@
       "relation": "oneToMany",
       "target": "api::booking.booking",
       "mappedBy": "branch"
+    },
+    "book_date": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::book-date.book-date",
+      "mappedBy": "branch"
     }
   }
 }

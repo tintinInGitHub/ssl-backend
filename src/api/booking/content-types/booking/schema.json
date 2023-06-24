@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "date": {
-      "type": "date"
-    },
     "name": {
       "type": "string"
     },
@@ -39,6 +36,12 @@
       "relation": "manyToOne",
       "target": "api::branch.branch",
       "inversedBy": "bookings"
+    },
+    "book_dates": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::book-date.book-date",
+      "mappedBy": "booking"
     }
   }
 }

@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "book_dates",
+  "info": {
+    "singularName": "book-date",
+    "pluralName": "book-dates",
+    "displayName": "bookDate",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date": {
+      "type": "date"
+    },
+    "amount": {
+      "type": "integer"
+    },
+    "full": {
+      "type": "boolean"
+    },
+    "booking": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::booking.booking",
+      "inversedBy": "book_dates"
+    },
+    "branch": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::branch.branch",
+      "inversedBy": "book_date"
+    }
+  }
+}
