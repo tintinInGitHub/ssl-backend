@@ -37,6 +37,7 @@ module.exports = createCoreController("api::booking.booking", ({ strapi }) => ({
     });
     console.log(isBook);
     var bookdateId = "";
+    var isFull = isBook[0]?.amount < 10 ? false : true;
     // console.log(isBook[0].amount);
     if (isBook.length) {
       let dataCreate = await strapi.db
@@ -45,7 +46,7 @@ module.exports = createCoreController("api::booking.booking", ({ strapi }) => ({
           where: { date: dateStr },
           data: {
             amount: amount + isBook[0]?.amount,
-            full: isBook[0]?.amount > 10 ? false : true,
+            full: isBook[0]?.amount < 10 ? false : true,
           },
         });
       bookdateId = dataCreate?.id;
@@ -75,6 +76,16 @@ module.exports = createCoreController("api::booking.booking", ({ strapi }) => ({
         book_dates: { id: bookdateId },
       },
     });
+    console.log(isFull, "isFull");
+    const _dateNow = new Date();
+    if (isFull) {
+      let dataSp = await strapi.db
+        .query("api::special-day.special-day")
+        .create({
+          data: { date: dateStr, Type: "Full", publishedAt: _dateNow },
+        });
+      console.log(dataSp);
+    }
 
     return data;
   },
