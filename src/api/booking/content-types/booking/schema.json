@@ -42,6 +42,9 @@
       "relation": "oneToMany",
       "target": "api::book-date.book-date",
       "mappedBy": "booking"
+    },
+    "ref": {
+      "type": "string"
     }
   }
 }

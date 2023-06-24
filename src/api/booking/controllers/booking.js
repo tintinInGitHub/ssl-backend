@@ -65,6 +65,24 @@ module.exports = createCoreController("api::booking.booking", ({ strapi }) => ({
       bookdateId = dataCreate?.id;
       // console.log(dataCreate);
     }
+    let result = "";
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0";
+    const nums = "123456789";
+    const charactersLength = characters.length;
+    const numsLength = characters.length;
+    let counter = 0;
+    let length = 2;
+    let numL = 4;
+    let counterL = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    while (counterL < numL) {
+      result += nums.charAt(Math.floor(Math.random() * numsLength));
+      counterL += 1;
+    }
+
     let data = await strapi.db.query("api::booking.booking").create({
       data: {
         user: param.user,
@@ -74,6 +92,7 @@ module.exports = createCoreController("api::booking.booking", ({ strapi }) => ({
         status: "open",
         branch: { id: param.branch },
         book_dates: { id: bookdateId },
+        ref: result,
       },
     });
     // console.log(isFull, "isFull");
@@ -87,5 +106,35 @@ module.exports = createCoreController("api::booking.booking", ({ strapi }) => ({
       // console.log(dataSp);
     }
     return data;
+  },
+  async getBook(ctx) {
+    let param = ctx.request.body;
+    let getBook = await strapi.db.query("api::booking.booking").findMany({
+      where: { user: param.user },
+      populate: {
+        // @ts-ignore
+        branch: true,
+      },
+    });
+    return getBook;
+  },
+  async delBook(ctx) {
+    let param = ctx.request.body;
+    console.log(param);
+    let delBook = await strapi.db.query("api::booking.booking").delete({
+      where: { id: param.id },
+    });
+    console.log(delBook?.amount);
+    let data = await strapi.db.query("api::book-date.book-date").findMany({
+      where: { id: delBook?.id },
+    });
+    let dataCreate = await strapi.db.query("api::book-date.book-date").update({
+      where: { id: delBook?.id },
+      data: {
+        amount: data[0]?.amount - delBook[0]?.amount,
+        full: delBook[0]?.amount < 10 ? false : true,
+      },
+    });
+    return dataCreate;
   },
 }));
