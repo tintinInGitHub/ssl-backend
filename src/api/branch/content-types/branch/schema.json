@@ -32,6 +32,12 @@
       "relation": "oneToOne",
       "target": "api::book-date.book-date",
       "mappedBy": "branch"
+    },
+    "special_days": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::special-day.special-day",
+      "mappedBy": "branch"
     }
   }
 }

@@ -35,10 +35,13 @@ module.exports = createCoreController("api::booking.booking", ({ strapi }) => ({
     let isBook = await strapi.db.query("api::book-date.book-date").findMany({
       where: { date: dateStr },
     });
-    // console.log(isBook);
+    console.log(isBook);
     var bookdateId = "";
-    var isFull = isBook[0]?.amount < 10 ? false : true;
-    // console.log(isBook[0].amount);
+    var isFull = isBook[0]?.amount > 10 ? false : true;
+    if (!isBook[0]?.amount) {
+      isFull = false;
+    }
+    console.log(isBook[0]?.amount, isFull);
     if (isBook.length) {
       let dataCreate = await strapi.db
         .query("api::book-date.book-date")
@@ -46,7 +49,7 @@ module.exports = createCoreController("api::booking.booking", ({ strapi }) => ({
           where: { date: dateStr },
           data: {
             amount: amount + isBook[0]?.amount,
-            full: isBook[0]?.amount < 10 ? false : true,
+            full: isBook[0]?.amount > 10 ? false : true,
           },
         });
       bookdateId = dataCreate?.id;
@@ -101,7 +104,12 @@ module.exports = createCoreController("api::booking.booking", ({ strapi }) => ({
       let dataSp = await strapi.db
         .query("api::special-day.special-day")
         .create({
-          data: { date: dateStr, Type: "Full", publishedAt: _dateNow },
+          data: {
+            date: dateStr,
+            Type: "Full",
+            publishedAt: _dateNow,
+            branch: { id: param.branch },
+          },
         });
       // console.log(dataSp);
     }
@@ -120,7 +128,7 @@ module.exports = createCoreController("api::booking.booking", ({ strapi }) => ({
   },
   async delBook(ctx) {
     let param = ctx.request.body;
-    console.log(param);
+    // console.log(param);
     let delBook = await strapi.db.query("api::booking.booking").delete({
       where: { id: param.id },
     });

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "special-day",
     "pluralName": "special-days",
-    "displayName": "specialDay"
+    "displayName": "specialDay",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,6 +22,12 @@
     },
     "date": {
       "type": "date"
+    },
+    "branch": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::branch.branch",
+      "inversedBy": "special_days"
     }
   }
 }
