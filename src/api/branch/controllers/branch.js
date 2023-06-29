@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use strict";
 
 /**
@@ -13,6 +14,7 @@ module.exports = createCoreController("api::branch.branch", ({ strapi }) => ({
         publishedAt: { $notNull: true },
         // $or: [{ inactive_at: null }, { inactive_at: { $gt: _dateNow } }],
       },
+      populate: { banner: true },
       orderBy: { id: "ASC" },
     });
     return data;

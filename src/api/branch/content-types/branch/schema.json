@@ -38,6 +38,16 @@
       "relation": "oneToMany",
       "target": "api::special-day.special-day",
       "mappedBy": "branch"
+    },
+    "banner": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }
