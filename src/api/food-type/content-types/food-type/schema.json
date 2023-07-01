@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "food_types",
+  "info": {
+    "singularName": "food-type",
+    "pluralName": "food-types",
+    "displayName": "foodType"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "food_and_drinks": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::food-and-drink.food-and-drink",
+      "inversedBy": "food_types"
+    }
+  }
+}

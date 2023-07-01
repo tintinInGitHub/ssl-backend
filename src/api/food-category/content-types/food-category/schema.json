@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "food_categories",
+  "info": {
+    "singularName": "food-category",
+    "pluralName": "food-categories",
+    "displayName": "FoodCategory"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "food_and_drink": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::food-and-drink.food-and-drink",
+      "inversedBy": "food_category"
+    },
+    "description": {
+      "type": "string"
+    },
+    "banner": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
