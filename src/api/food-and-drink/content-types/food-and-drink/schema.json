@@ -4,7 +4,8 @@
   "info": {
     "singularName": "food-and-drink",
     "pluralName": "food-and-drinks",
-    "displayName": "food&drink"
+    "displayName": "food&drink",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -15,14 +16,15 @@
       "type": "string"
     },
     "banner": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "avaiable": {
       "type": "boolean"
@@ -44,6 +46,9 @@
       "relation": "oneToOne",
       "target": "api::food-category.food-category",
       "mappedBy": "food_and_drink"
+    },
+    "description": {
+      "type": "string"
     }
   }
 }
