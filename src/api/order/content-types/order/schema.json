@@ -28,8 +28,10 @@
       "relation": "oneToOne",
       "target": "api::branch.branch"
     },
-    "foodOrder": {
-      "type": "json"
+    "listOrder": {
+      "type": "component",
+      "repeatable": true,
+      "component": "list-order.list-order"
     }
   }
 }

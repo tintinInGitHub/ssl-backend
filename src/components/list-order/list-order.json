@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_list_order_list_orders",
+  "info": {
+    "displayName": "ListOrder",
+    "icon": "file",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "food_and_drinks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::food-and-drink.food-and-drink"
+    },
+    "quantity": {
+      "type": "integer"
+    }
+  }
+}
